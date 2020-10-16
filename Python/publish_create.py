@@ -56,12 +56,12 @@ def get_createcases(num_of_cases_to_fetch=int(cfg.CASES_TO_FETCH)):
     json_str = json.dumps(CREATE_DATA)
    
     data = json.loads(json_str)
-    for i in range(num_of_cases_to_fetch):
-        data["caseId"] = str(uuid.uuid4())
-        message = json.dumps(data)  
-
-        props = pika.BasicProperties(content_type='application/json', headers = { '__TypeId__':'uk.gov.ons.census.fwmt.common.rm.dto.FwmtActionInstruction',
-                'content_type':'application/json'}) 
+    current_milli_time = int(round(time.time() * 1000))
+        for i in range(num_of_cases_to_fetch):
+            data["caseId"] = str(uuid.uuid4())
+            message = json.dumps(data)
+            props = pika.BasicProperties(content_type='application/json',timestamp=current_milli_time, headers = { '__TypeId__':'uk.gov.ons.census.fwmt.common.rm.dto.FwmtActionInstruction',
+                    'content_type':'application/json'}) 
                                     #             '__TypeId__':'uk.gov.ons.census.fwmt.common.rm.dto.FwmtActionInstruction'}})
         watch = StopWatch()
         watch.start()
