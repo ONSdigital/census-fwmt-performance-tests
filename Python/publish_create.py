@@ -19,7 +19,7 @@ CREATE_DATA= {
     "ce1Complete": "false",
     "estabType": "GRT",
     "fieldCoordinatorId": "SH-TWH1-ZJ",
-    "caseRef": "12345678",
+    "caseRef": "GWPERF_12345678",
     "oa": "E00167164",
     "estabUprn": "6123456",
     "surveyName": "CENSUS",
@@ -59,6 +59,7 @@ def get_createcases(num_of_cases_to_fetch=int(cfg.CASES_TO_FETCH)):
     current_milli_time = int(round(time.time() * 1000))
     for i in range(num_of_cases_to_fetch):
         data["caseId"] = str(uuid.uuid4())
+        data["caseRef"] = "GWPERF_"+ str(uuid.uuid4())[:30]
         message = json.dumps(data)
         props = pika.BasicProperties(content_type='application/json',timestamp=current_milli_time, headers = { '__TypeId__':'uk.gov.ons.census.fwmt.common.rm.dto.FwmtActionInstruction',
                 'content_type':'application/json'})
