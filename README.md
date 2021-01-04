@@ -80,3 +80,24 @@ In test duration of 60s Total 11624 requests sent with 257.00 requests per secon
 --------------------------------------------------------------------------------------------------------------------------------------------
  POST /spgOutcome                                               11624     0(0.00%)     309       4    1469  |     300  257.20
 --------------------------------------------------------------------------------------------------------------------------------------------
+
+Alternatively way to run the performance tests 
+
+1. Connect the terminal to envirnonment that you want to run the tests by using the following command. This example is for Greylodge
+
+gcloud container clusters get-credentials fwmt-gateway-k8s-cluster --region europe-west2 --project census-fwmt-gateway-test
+
+2. connect to the kubernates cluster and play the following comand and get the pod in which test are running
+Kubectl get pods
+
+3. connect to the pod by the follwoing command where fwmtg-perf-test-66b9746fd4-5z7n7 is the test pod
+kubectl exec --stdin --tty fwmtg-perf-test-66b9746fd4-5z7n7  -- /bin/bash
+
+4. view the config.py file and change the number 
+change the value of CASES_TO_FETCH = 1000000
+
+5. Run the following command to run the tests
+python publish_create.py 
+
+
+
