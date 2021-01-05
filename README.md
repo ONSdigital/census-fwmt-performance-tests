@@ -44,6 +44,8 @@ FWMTG-perf-tests: Message simulator and load generator for performance testing o
 
 4. view the config.py file and change the number 
 change the value of CASES_TO_FETCH = 1000000
+`sed -i 's/old-text/new-text/g' config.py`
+
 
 5. Run the following command to run the tests
 python publish_create.py 
@@ -102,5 +104,7 @@ In test duration of 60s Total 11624 requests sent with 257.00 requests per secon
 --------------------------------------------------------------------------------------------------------------------------------------------
  POST /spgOutcome                                               11624     0(0.00%)     309       4    1469  |     300  257.20
 --------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
