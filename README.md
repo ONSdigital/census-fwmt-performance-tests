@@ -94,7 +94,8 @@ Kubectl get pods
 kubectl exec --stdin --tty fwmtg-perf-test-66b9746fd4-5z7n7  -- /bin/bash
 
 4. view the config.py file and change the number 
-change the value of CASES_TO_FETCH = 1000000
+change the value of CASES_TO_FETCH = 1000000 by following commad.
+sed -i 's/old-text/new-text/g' config.py
 
 5. Run the following command to run the tests
 python publish_create.py 
